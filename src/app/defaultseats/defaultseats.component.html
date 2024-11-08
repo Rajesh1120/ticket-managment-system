@@ -4,22 +4,22 @@
         <button [ngClass]="
         {'unselected-seat':seat.seat_status==='unselected',
             'selected-seat':seat.seat_status==='selected',
-            'occupied-seat':seat.seat_status==='occupied'
+            'occupied-seat':seat.seat_status==='occupied' 
         }"
         (click)="onSeatClicked(seat)">{{seat.id}}</button>
     </div>
-    
-    
 </main>
+
 <button (click)="onCheckOut(inital_selected)">Next</button>
 
 
 <div *ngIf="inital_selected && clickedNext">
     <p>Selected seats:</p>
     <div *ngFor="let selected of inital_selected">
-        <p>Seat Number {{selected.id}}</p>
+        <p>Seat Number: {{selected.id}}</p>
     </div>
     <p>Cost: $10 </p>
-    <button>Purchase</button>
+    <button (click)="onPurchase(inital_selected)">Purchase</button>
+    <button (click)="onCancelBooking()">Cancel</button>
     
 </div>

@@ -3,5 +3,9 @@
 }
 .occupied-seat{
     background-color: gray;
+    cursor:not-allowed;
     
+}
+button{
+    cursor: pointer;
 }

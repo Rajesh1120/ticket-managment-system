@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
 export class DefaultseatsComponent {
   
   seats=DefaultSeats;
-  clickedNext=false;
+  clickedNext:boolean=false;
+  clickedPurchase:boolean=false;
   constructor(){
     console.log(this.seats);
   }
@@ -23,15 +24,31 @@ export class DefaultseatsComponent {
       seat.seat_status="selected"
       this.inital_selected.push(seat);
     }
+    else if(seat.seat_status==="selected"){
+      seat.seat_status="unselected"
+      this.inital_selected.map.subscribe();/////////////////////
+    }
     
   }
   onCheckOut(inital_selected:any){
     if (inital_selected){
-      this.clickedNext=true
+      this.clickedNext=true;
+    }
+    else{
+      this.clickedNext=false;
     }
   }
-  onPurchase(){
-
+  onPurchase(inital_selected:any){
+    for(let i =0; i<inital_selected.length; i++){
+      inital_selected[i].seat_status="occupied";
+      this.clickedPurchase=true;
+    }
+    this.inital_selected=[];
+    
+  }
+  onCancelBooking(){
+    this.clickedPurchase=false;
+    this.inital_selected=[];
   }
   
 }
