@@ -1,16 +1,25 @@
 <p>defaultseats works!</p>
-<button>A1</button>
-<button>A2</button>
-<button>A3</button>
-<button>A4</button>
-<button>A5</button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
-<button></button>
+<main>
+    <div *ngFor="let seat of seats">
+        <button [ngClass]="
+        {'unselected-seat':seat.seat_status==='unselected',
+            'selected-seat':seat.seat_status==='selected',
+            'occupied-seat':seat.seat_status==='occupied'
+        }"
+        (click)="onSeatClicked(seat)">{{seat.id}}</button>
+    </div>
+    
+    
+</main>
+<button (click)="onCheckOut(inital_selected)">Next</button>
+
+
+<div *ngIf="inital_selected && clickedNext">
+    <p>Selected seats:</p>
+    <div *ngFor="let selected of inital_selected">
+        <p>Seat Number {{selected.id}}</p>
+    </div>
+    <p>Cost: $10 </p>
+    <button>Purchase</button>
+    
+</div>

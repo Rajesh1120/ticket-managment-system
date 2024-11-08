@@ -1,0 +1,7 @@
+.selected-seat{
+    background-color: red;
+}
+.occupied-seat{
+    background-color: gray;
+    
+}

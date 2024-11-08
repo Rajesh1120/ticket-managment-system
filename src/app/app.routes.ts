@@ -10,5 +10,6 @@ export const routes: Routes = [
     {path:'',component:HomeComponent},
     {path:'town-center',component:TowncenterComponent},
     {path:'lionsgate',component:LionsgateComponent},
-    {path:'town-center/:moviename/:showtime',component:DefaultseatsComponent}
+    {path:'town-center/:moviename/:showtime',component:DefaultseatsComponent},
+    
 ];
