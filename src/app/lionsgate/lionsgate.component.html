@@ -1,1 +1,24 @@
 <p>lionsgate works!</p>
+
+
+<h1>English</h1>
+<main>
+    <div *ngFor="let movie of movies">
+        <ul>
+            <li>
+               <h2>Movie Name: {{movie.moviename}}</h2>
+               <p>Show times : 
+                    <button [routerLink]="['/lionsgate/',movie.moviename,movie.movietimes[0]]">{{movie.movietimes[0]}}</button>
+                    <button [routerLink]="['/lionsgate/',movie.moviename,movie.movietimes[1]]">{{movie.movietimes[1]}}</button>
+                    <button [routerLink]="['/lionsgate/',movie.moviename,movie.movietimes[2]]">{{movie.movietimes[2]}}</button>
+                    <button [routerLink]="['/lionsgate/',movie.moviename,movie.movietimes[3]]">{{movie.movietimes[3]}}</button>
+                </p>
+                <p *ngIf="movie.isFull">Full</p>
+                <p *ngIf="!movie.isFull">Avaliable</p>
+            </li>
+        </ul>
+    </div>
+</main>
+   
+
+

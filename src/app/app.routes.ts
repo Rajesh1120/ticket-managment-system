@@ -11,5 +11,6 @@ export const routes: Routes = [
     {path:'town-center',component:TowncenterComponent},
     {path:'lionsgate',component:LionsgateComponent},
     {path:'town-center/:moviename/:showtime',component:DefaultseatsComponent},
+    {path:'lionsgate/:moviename/:showtime', component:DefaultseatsComponent}
     
 ];
