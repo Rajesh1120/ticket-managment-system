@@ -60,3 +60,5 @@ export const DefaultSeats=[
         
     
 ]
+
+export const bookings:{[key:string] : string[]} ={};

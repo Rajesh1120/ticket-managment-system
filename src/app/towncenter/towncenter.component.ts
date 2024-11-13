@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { moviesenglish } from './towncenter.service.component';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-towncenter',
   standalone: true,
@@ -13,8 +13,12 @@ export class TowncenterComponent {
   
   movies=moviesenglish
 
-  constructor(){
+  
+
+  constructor(private route : ActivatedRoute){
     console.log(this.movies)
+    
   }
+    
 
 }

@@ -1,6 +1,8 @@
 <p>defaultseats works!</p>
 <main>
-    <div *ngFor="let seat of seats">
+    
+    
+     <div *ngFor="let seat of seats">
         <button [ngClass]="
         {'unselected-seat':seat.seat_status==='unselected',
             'selected-seat':seat.seat_status==='selected',

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { DefaultSeats } from './defaultseatsservice.component';
 import { CommonModule } from '@angular/common';
 import { moviesenglish } from '../towncenter/towncenter.service.component';
+import { ActivatedRoute } from '@angular/router';
+import { bookings } from './defaultseatsservice.component';
+
 
 @Component({
   selector: 'app-defaultseats',
@@ -14,20 +17,41 @@ import { moviesenglish } from '../towncenter/towncenter.service.component';
 export class DefaultseatsComponent {
   
   seats=DefaultSeats;
+  bookings=bookings;
   clickedNext:boolean=false;
   clickedPurchase:boolean=false;
-  constructor(){
+  moviename="";
+  showtime="";
+  key='';
+  updatedBookings:any;
+
+
+  constructor(private route:ActivatedRoute){
     console.log(this.seats);
+    this.moviename=this.route.snapshot.paramMap.get('moviename')!;
+    this.showtime=this.route.snapshot.paramMap.get('showtime')!;
+
+    console.log(this.moviename,this.showtime);
+    this.key=`${this.moviename}_${this.showtime}`;
+    
+    this.updatedBookings=(JSON.parse(localStorage.getItem('bookings') || '{}'))
+    console.log(this.updatedBookings[this.key])
+    
     if (this.seats.length===this.inital_selected){
      // is this full ?
     }
   }
+   
+
   inital_selected:any =[];
 
   onSeatClicked(seat: any){
     if(seat.seat_status==="unselected"){
       seat.seat_status="selected"
       this.inital_selected.push(seat);
+      
+
+      
     }
     else if(seat.seat_status==="selected"){
       seat.seat_status="unselected"
@@ -48,6 +72,9 @@ export class DefaultseatsComponent {
     for(let i =0; i<inital_selected.length; i++){
       inital_selected[i].seat_status="occupied";
       this.clickedPurchase=true;
+      this.bookings[this.key]=[...this.inital_selected];
+      console.log(this.bookings);
+      localStorage.setItem('bookings',JSON.stringify(this.bookings))
     }
     this.inital_selected=[];
     this.clickedNext=false;
@@ -59,5 +86,13 @@ export class DefaultseatsComponent {
     this.clickedNext=false;
     
   }
+  
+
+
+ 
+  
+
+
+
   
 }
